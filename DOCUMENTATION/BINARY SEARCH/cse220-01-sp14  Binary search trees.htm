@@ -1,0 +1,547 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0051)http://moodle.bracu.ac.bd/mod/page/view.php?id=5312 -->
+<html dir="ltr" lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" class="yui3-js-enabled"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>cse220-01-sp14: Binary search trees</title>
+    <link rel="shortcut icon" href="http://moodle.bracu.ac.bd/theme/image.php?theme=formfactor&image=favicon&rev=162&component=theme">
+    
+<meta name="keywords" content="moodle, cse220-01-sp14: Binary search trees">
+<link rel="stylesheet" type="text/css" href="./cse220-01-sp14  Binary search trees_files/yui_combo.php"><script type="text/javascript" src="./cse220-01-sp14  Binary search trees_files/yui_combo(1).php"></script><script type="text/javascript" src="./cse220-01-sp14  Binary search trees_files/yui_combo(2).php"></script>
+<link rel="stylesheet" type="text/css" href="./cse220-01-sp14  Binary search trees_files/yui_combo(3).php">
+<script id="yui_3_2_0_1_13970801737089" type="text/javascript" charset="utf-8" src="./cse220-01-sp14  Binary search trees_files/yui_combo(4).php"></script><script id="yui_3_2_0_1_139708017370810" type="text/javascript" charset="utf-8" src="./cse220-01-sp14  Binary search trees_files/javascript.php"></script><script id="yui_3_2_0_1_139708017370811" type="text/javascript" charset="utf-8" src="./cse220-01-sp14  Binary search trees_files/yui_combo(5).php"></script><script id="firstthemesheet" type="text/css">/** Required in order to fix style inclusion problems in IE with YUI **/</script><link rel="stylesheet" type="text/css" href="./cse220-01-sp14  Binary search trees_files/styles.php">
+<script type="text/javascript">
+//<![CDATA[
+var M = {}; M.yui = {}; var moodleConfigFn = function(me) {var p = me.path, b = me.name.replace(/^moodle-/,'').split('-', 3), n = b.pop();if (/(skin|core)/.test(n)) {n = b.pop();me.type = 'css';};me.path = b.join('-')+'/'+n+'/'+n+'.'+me.type;}; var galleryConfigFn = function(me) {var p = me.path,v=M.yui.galleryversion,f;if(/-(skin|core)/.test(me.name)) {me.type = 'css';p = p.replace(/-(skin|core)/, '').replace(/\.js/, '.css').split('/'), f = p.pop().replace(/(\-(min|debug))/, '');if (/-skin/.test(me.name)) {p.splice(p.length,0,v,'assets','skins','sam', f);} else {p.splice(p.length,0,v,'assets', f);};} else {p = p.split('/'), f = p.pop();p.splice(p.length,0,v, f);};me.path = p.join('/');};
+M.yui.loader = {"base":"http:\/\/moodle.bracu.ac.bd\/lib\/yui\/3.2.0\/build\/","comboBase":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?","combine":true,"filter":"","insertBefore":"firstthemesheet","modules":{"yui2-event":{"type":"js","requires":["yui2-yahoo"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/event\/event-min.js"},"yui2-animation":{"type":"js","requires":["yui2-dom","yui2-event"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/animation\/animation-min.js"},"yui2-swfstore":{"type":"js","requires":["yui2-element","yui2-cookie","yui2-swf"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/swfstore\/swfstore-min.js"},"yui2-datatable":{"requires":["yui2-element","yui2-datasource"],"type":"js","optional":["yui2-calendar","yui2-dragdrop","yui2-paginator"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/datatable\/datatable-min.js"},"yui2-swfdetect":{"type":"js","requires":["yui2-yahoo"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/swfdetect\/swfdetect-min.js"},"yui2-menu":{"requires":["yui2-containercore"],"type":"js","fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/menu\/menu-min.js"},"yui2-treeview":{"requires":["yui2-event","yui2-dom"],"type":"js","optional":["yui2-json","yui2-animation","yui2-calendar"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/treeview\/treeview-min.js"},"yui2-get":{"type":"js","requires":["yui2-yahoo"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/get\/get-min.js"},"yui2-progressbar":{"requires":["yui2-element"],"type":"js","optional":["yui2-animation"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/progressbar\/progressbar-min.js"},"yui2-uploader":{"type":"js","requires":["yui2-element"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/uploader\/uploader-min.js"},"yui2-datasource":{"requires":["yui2-event"],"type":"js","optional":["yui2-connection"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/datasource\/datasource-min.js"},"yui2-profiler":{"type":"js","requires":["yui2-yahoo"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/profiler\/profiler-min.js"},"yui2-connection":{"supersedes":["yui2-connectioncore"],"requires":["yui2-event"],"type":"js","fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/connection\/connection-min.js"},"yui2-json":{"type":"js","requires":["yui2-yahoo"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/json\/json-min.js"},"yui2-datemath":{"type":"js","requires":["yui2-yahoo"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/datemath\/datemath-min.js"},"yui2-calendar":{"supersedes":["yui2-datemath"],"requires":["yui2-event","yui2-dom"],"type":"js","fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/calendar\/calendar-min.js"},"yui2-simpleeditor":{"requires":["yui2-element"],"type":"js","optional":["yui2-containercore","yui2-menu","yui2-button","yui2-animation","yui2-dragdrop"],"pkg":"editor","fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/editor\/simpleeditor-min.js"},"yui2-swf":{"supersedes":["yui2-swfdetect"],"requires":["yui2-element"],"type":"js","fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/swf\/swf-min.js"},"yui2-event-simulate":{"type":"js","requires":["yui2-event"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/event-simulate\/event-simulate-min.js"},"yui2-yuiloader-dom-event":{"supersedes":["yui2-yahoo","yui2-dom","yui2-event","yui2-get","yui2-yuiloader","yui2-yahoo-dom-event"],"rollup":5,"type":"js","fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/yuiloader-dom-event\/yuiloader-dom-event.js"},"yui2-storage":{"requires":["yui2-yahoo","yui2-event","yui2-cookie"],"type":"js","optional":["yui2-swfstore"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/storage\/storage-min.js"},"yui2-container":{"supersedes":["yui2-containercore"],"requires":["yui2-dom","yui2-event"],"type":"js","optional":["yui2-dragdrop","yui2-animation","yui2-connection"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/container\/container-min.js"},"yui2-profilerviewer":{"requires":["yui2-profiler","yui2-yuiloader","yui2-element"],"type":"js","fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/profilerviewer\/profilerviewer-min.js"},"yui2-imagecropper":{"requires":["yui2-dragdrop","yui2-element","yui2-resize"],"type":"js","fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/imagecropper\/imagecropper-min.js"},"yui2-paginator":{"requires":["yui2-element"],"type":"js","fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/paginator\/paginator-min.js"},"yui2-tabview":{"requires":["yui2-element"],"type":"js","optional":["yui2-connection"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/tabview\/tabview-min.js"},"yui2-layout":{"requires":["yui2-element"],"type":"js","optional":["yui2-animation","yui2-dragdrop","yui2-resize","yui2-selector"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/layout\/layout-min.js"},"yui2-imageloader":{"type":"js","requires":["yui2-event","yui2-dom"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/imageloader\/imageloader-min.js"},"yui2-containercore":{"requires":["yui2-dom","yui2-event"],"type":"js","pkg":"container","fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/container\/container_core-min.js"},"yui2-event-mouseenter":{"type":"js","requires":["yui2-dom","yui2-event"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/event-mouseenter\/event-mouseenter-min.js"},"yui2-logger":{"requires":["yui2-event","yui2-dom"],"type":"js","optional":["yui2-dragdrop"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/logger\/logger-min.js"},"yui2-cookie":{"type":"js","requires":["yui2-yahoo"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/cookie\/cookie-min.js"},"yui2-stylesheet":{"type":"js","requires":["yui2-yahoo"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/stylesheet\/stylesheet-min.js"},"yui2-connectioncore":{"requires":["yui2-event"],"type":"js","pkg":"connection","fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/connection\/connection_core-min.js"},"yui2-utilities":{"supersedes":["yui2-yahoo","yui2-event","yui2-dragdrop","yui2-animation","yui2-dom","yui2-connection","yui2-element","yui2-yahoo-dom-event","yui2-get","yui2-yuiloader","yui2-yuiloader-dom-event"],"rollup":8,"type":"js","fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/utilities\/utilities.js"},"yui2-dragdrop":{"type":"js","requires":["yui2-dom","yui2-event"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/dragdrop\/dragdrop-min.js"},"yui2-colorpicker":{"requires":["yui2-slider","yui2-element"],"type":"js","optional":["yui2-animation"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/colorpicker\/colorpicker-min.js"},"yui2-event-delegate":{"requires":["yui2-event"],"type":"js","optional":["yui2-selector"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/event-delegate\/event-delegate-min.js"},"yui2-yuiloader":{"type":"js","supersedes":["yui2-yahoo","yui2-get"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/yuiloader\/yuiloader-min.js"},"yui2-button":{"requires":["yui2-element"],"type":"js","optional":["yui2-menu"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/button\/button-min.js"},"yui2-resize":{"requires":["yui2-dragdrop","yui2-element"],"type":"js","optional":["yui2-animation"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/resize\/resize-min.js"},"yui2-element":{"requires":["yui2-dom","yui2-event"],"type":"js","optional":["yui2-event-mouseenter","yui2-event-delegate"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/element\/element-min.js"},"yui2-history":{"type":"js","requires":["yui2-event"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/history\/history-min.js"},"yui2-yahoo":{"type":"js","fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/yahoo\/yahoo-min.js"},"yui2-element-delegate":{"type":"js","requires":["yui2-element"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/element-delegate\/element-delegate-min.js"},"yui2-charts":{"type":"js","requires":["yui2-element","yui2-json","yui2-datasource","yui2-swf"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/charts\/charts-min.js"},"yui2-slider":{"requires":["yui2-dragdrop"],"type":"js","optional":["yui2-animation"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/slider\/slider-min.js"},"yui2-selector":{"type":"js","requires":["yui2-yahoo","yui2-dom"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/selector\/selector-min.js"},"yui2-yuitest":{"requires":["yui2-logger"],"type":"js","optional":["yui2-event-simulate"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/yuitest\/yuitest-min.js"},"yui2-carousel":{"requires":["yui2-element"],"type":"js","optional":["yui2-animation"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/carousel\/carousel-min.js"},"yui2-autocomplete":{"requires":["yui2-dom","yui2-event","yui2-datasource"],"type":"js","optional":["yui2-connection","yui2-animation"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/autocomplete\/autocomplete-min.js"},"yui2-yahoo-dom-event":{"supersedes":["yui2-yahoo","yui2-event","yui2-dom"],"rollup":3,"type":"js","fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/yahoo-dom-event\/yahoo-dom-event.js"},"yui2-dom":{"type":"js","requires":["yui2-yahoo"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/dom\/dom-min.js"},"yui2-editor":{"supersedes":["yui2-simpleeditor"],"requires":["yui2-menu","yui2-element","yui2-button"],"type":"js","optional":["yui2-animation","yui2-dragdrop"],"fullpath":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?2.8.2\/build\/editor\/editor-min.js"},"core_filepicker":{"name":"core_filepicker","fullpath":"http:\/\/moodle.bracu.ac.bd\/lib\/javascript.php?file=%2Frepository%2Ffilepicker.js&rev=161","requires":["base","node","node-event-simulate","json","async-queue","io","yui2-button","yui2-container","yui2-layout","yui2-menu","yui2-treeview","yui2-dragdrop","yui2-cookie"]},"core_dock":{"name":"core_dock","fullpath":"http:\/\/moodle.bracu.ac.bd\/lib\/javascript.php?file=%2Fblocks%2Fdock.js&rev=161","requires":["base","node","event-custom","event-mouseenter","event-resize"]}},"groups":{"moodle":{"name":"moodle","base":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?moodle\/161\/","comboBase":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?","combine":true,"filter":"","ext":false,"root":"moodle\/161\/","patterns":{"moodle-":{"group":"moodle","configFn":moodleConfigFn},"root":"moodle"}},"local":{"name":"gallery","base":"http:\/\/moodle.bracu.ac.bd\/lib\/yui\/gallery\/","comboBase":"http:\/\/moodle.bracu.ac.bd\/theme\/yui_combo.php?","combine":true,"filter":"","ext":false,"root":"gallery\/","patterns":{"gallery-":{"group":"gallery","configFn":galleryConfigFn},"root":"gallery"}}}};
+M.cfg = {"wwwroot":"http:\/\/moodle.bracu.ac.bd","sesskey":"tvOAnvczDm","loadingicon":"http:\/\/moodle.bracu.ac.bd\/theme\/image.php?theme=formfactor&image=i%2Floading_small&rev=162","themerev":"162","theme":"formfactor","jsrev":"161"};
+//]]>
+</script>
+<script type="text/javascript" src="./cse220-01-sp14  Binary search trees_files/javascript(1).php"></script>
+<script type="text/javascript" src="./cse220-01-sp14  Binary search trees_files/javascript(2).php"></script>
+<style type="text/css" id="GINGER_SOFTWARE_style">.GINGER_SOFTWARE_noMark { background : transparent; }  .GINGER_SOFTWARE_wrapper{ position: absolute; overflow: hidden; margin: 0px; padding: 0px; border: 0px solid transparent } .GINGER_SOFTWARE_contour { position : absolute; margin: 0px; }  .GINGER_SOFTWARE_richText { margin : 0px; padding-bottom: 3px; border-width: 0px; border-color: transparent; display: block; color: transparent; -webkit-text-fill-color: transparent; overflow: hidden; white-space: pre-wrap;}  .GINGER_SOFTWARE_inputWrapper .GINGER_SOFTWARE_richText {position: absolute;}  .GINGER_SOFTWARE_canvas { display:none; background-repeat:no-repeat;}  .GINGER_SOFTWARE_control .GINGER_SOFTWARE_correct, .GINGER_SOFTWARE_control .GINGER_SOFTWARE_SpellingCorrect, .GINGER_SOFTWARE_control .GINGER_SOFTWARE_spelling, .GINGER_SOFTWARE_control .GINGER_SOFTWARE_mark {border-top-left-radius:2px; border-top-right-radius:2px; border-bottom-right-radius:2px; border-bottom-left-radius:2px;} .GINGER_SOFTWARE_control .GINGER_SOFTWARE_correct, .GINGER_SOFTWARE_control .GINGER_SOFTWARE_SpellingCorrect, .GINGER_SOFTWARE_control .GINGER_SOFTWARE_spelling, .GINGER_SOFTWARE_control .GINGER_SOFTWARE_mark {background-image:url(data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjhFQ0Y2OENGMzE5OTExRTI4NjMxOTExNTUyMDhEMDMwIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjhFQ0Y2OEQwMzE5OTExRTI4NjMxOTExNTUyMDhEMDMwIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6OEVDRjY4Q0QzMTk5MTFFMjg2MzE5MTE1NTIwOEQwMzAiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6OEVDRjY4Q0UzMTk5MTFFMjg2MzE5MTE1NTIwOEQwMzAiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5RRxRxAAAAD0lEQVR42mK48+w7QIABAAVbAroowN08AAAAAElFTkSuQmCC)!important;} .GINGER_SOFTWARE_control .GINGER_SOFTWARE_correct.GINGER_SOFTWARE_synonym, .GINGER_SOFTWARE_control .GINGER_SOFTWARE_SpellingCorrect.GINGER_SOFTWARE_synonym, .GINGER_SOFTWARE_control .GINGER_SOFTWARE_spelling.GINGER_SOFTWARE_synonym, .GINGER_SOFTWARE_control .GINGER_SOFTWARE_mark.GINGER_SOFTWARE_synonym {background-image:url(data:image/gif;base64,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)!important;} .GINGER_SOFTWARE_control .GINGER_SOFTWARE_correct.GINGER_SOFTWARE_noSuggestion, .GINGER_SOFTWARE_control .GINGER_SOFTWARE_SpellingCorrect.GINGER_SOFTWARE_noSuggestion, .GINGER_SOFTWARE_control .GINGER_SOFTWARE_spelling.GINGER_SOFTWARE_noSuggestion, .GINGER_SOFTWARE_control .GINGER_SOFTWARE_mark.GINGER_SOFTWARE_noSuggestion {background-image:url(data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjhFQ0Y2OENGMzE5OTExRTI4NjMxOTExNTUyMDhEMDMwIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjhFQ0Y2OEQwMzE5OTExRTI4NjMxOTExNTUyMDhEMDMwIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6OEVDRjY4Q0QzMTk5MTFFMjg2MzE5MTE1NTIwOEQwMzAiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6OEVDRjY4Q0UzMTk5MTFFMjg2MzE5MTE1NTIwOEQwMzAiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5RRxRxAAAAD0lEQVR42mK48+w7QIABAAVbAroowN08AAAAAElFTkSuQmCC)!important;} .GINGER_SOFTWARE_richText .GINGER_SOFTWARE_correct, .GINGER_SOFTWARE_richText .GINGER_SOFTWARE_SpellingCorrect, .GINGER_SOFTWARE_richText .GINGER_SOFTWARE_spelling, .GINGER_SOFTWARE_richText .GINGER_SOFTWARE_mark {position:relative; background-image:none!important;} .GINGER_SOFTWARE_richText .GINGER_SOFTWARE_markHighlightLeft { position : absolute; left:-2px; top:0px; bottom:0px; width:2px;} .GINGER_SOFTWARE_richText .GINGER_SOFTWARE_markHighlightRight { position : absolute; right:-2px; top:0px; bottom:0px; width:2px;} .GINGER_SOFTWARE_richText .GINGER_SOFTWARE_markHighlightTop { position : absolute; left:0px; right:0px; top:-2px; height:3px;} .GINGER_SOFTWARE_richText .GINGER_SOFTWARE_markHighlightBottom { position : absolute; left:0px; right:0px; bottom:-2px; height:3px;}</style></head>
+<body id="page-mod-page-view" class=" path-mod path-mod-page safari dir-ltr lang-en yui-skin-sam yui3-skin-sam moodle-bracu-ac-bd pagelayout-incourse course-328 context-10827 cmid-5312 category-12 side-pre-only jsenabled" ginger_software_stylesheet="true" ginger_software_doc="true">
+<div class="skiplinks"><a class="skip" href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5312#maincontent">Skip to main content</a></div>
+<script type="text/javascript">
+//<![CDATA[
+document.body.className += ' jsenabled';
+//]]>
+</script>
+
+
+<div id="page">
+
+
+    <div id="page-header" class="clearfix">
+		<div id="page-header-wrapper">
+
+	        		    	<h1 class="headermain">CSE 220: Data Structures (Spring '14) </h1>
+    		    <div class="headermenu">
+        			<div class="logininfo">You are logged in as <a href="http://moodle.bracu.ac.bd/user/profile.php?id=2747">MUHAIMINUR RAHMAN</a>  (<a href="http://moodle.bracu.ac.bd/login/logout.php?sesskey=tvOAnvczDm">Logout</a>)</div>	        	</div>
+	        
+	    </div>
+    </div>
+
+                  <ul id="page-navigation" class="clearfix">
+          <li>&nbsp;</li>
+        </ul>
+      	
+    	    <div class="navbar clearfix">
+    	    <div class="breadcrumb"><span class="accesshide">Page path</span><ul><li><a title="Home" href="http://moodle.bracu.ac.bd/">Home</a></li><li> <span class="accesshide "><span class="arrow_text">/</span>&nbsp;</span><span class="arrow sep">►</span> <span>My courses</span></li><li> <span class="accesshide "><span class="arrow_text">/</span>&nbsp;</span><span class="arrow sep">►</span> <a title="CSE 220: Data Structures (Spring &#39;14) " href="http://moodle.bracu.ac.bd/course/view.php?id=328">cse220-01-sp14</a></li><li> <span class="accesshide "><span class="arrow_text">/</span>&nbsp;</span><span class="arrow sep">►</span> <span>Trees and Graphs</span></li><li> <span class="accesshide "><span class="arrow_text">/</span>&nbsp;</span><span class="arrow sep">►</span> <a title="Page" href="./cse220-01-sp14  Binary search trees_files/cse220-01-sp14  Binary search trees.htm">Binary search trees</a></li></ul></div>
+            <div class="navbutton"> </div>
+        </div>
+    
+<!-- END OF HEADER -->
+
+<div id="page-content-wrapper">
+    <div id="page-content">
+        <div id="region-main-box">
+            <div id="region-post-box">
+
+                <div id="region-main-wrap">
+                    <div id="region-main">
+                        <div class="region-content">
+                            <span id="maincontent"></span><h2 id="pageheading" class="main">Binary search trees</h2><div class="box generalbox center clearfix"><div class="no-overflow"><style type="text/css"><!--
+  code { font-family: "courier new", courier, mono; font-size: 14px; }
+  tt   { font-family: "courier new", courier, mono; font-size: 14px; }
+  blockquote { margin-left: 40px; margin-right: 0px; }
+  blockquote pre { font-family: "courier new", courier, mono; font-size: 13px; font-weight: normal; background-color:#eeeedd; padding: 10px 15px 10px 15px; }
+  blockquote pre.small { font-family: "courier new", courier, mono; font-size: 11px; background-color:#ebebeb;}
+  blockquote pre.tiny { font-family: "courier new", courier, mono; font-size: 10px; background-color:#ebebeb;}
+  pre { margin-left: 0px; font-family: "courier new", courier, mono; font-size: 13px; font-weight: normal; background-color:#eeeedd; padding: 10px 10px 10px 15px; }
+--></style>
+<h1><!-- <center> -->   Binary Search Trees<br> <!--     <small>Last modified: Jul 8, 2011</small> --> <!-- </center> --></h1>
+<hr>
+<h2><a name="toc">Table of contents</a></h2>
+<ol type="I">
+<li><a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5312#intro">Introduction</a> </li>
+<li><a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5312#operations">Operations on binary search trees</a> </li>
+<li><a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5312#performance">Performance of binary search trees</a> </li>
+<li><a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5312#discussion">Discussion</a> </li>
+</ol> 
+<hr>
+<h2><a name="intro">Introduction</a></h2>
+<p>See Sedgewick sections 5.4-5.6 for general discussion on trees, and 5.7 for recursive binary-tree algorithms. In these notes, we're going to focus on binary search trees, which are covered in Sedgewick section 12.6.</p>
+<p>Binary search trees are binary trees with the additional properties:</p>
+<p>for any internal node:</p>
+<ul>
+<li>the key in the left child must be less than the node's key, and </li>
+<li>the key in the right child must be larger than the node's key; </li>
+</ul>
+<p>and this must hold recursively.</p>
+<p>A consequence of this "must hold recursively" is the following:</p>
+<p>for any internal node:</p>
+<ul>
+<li>all keys in the left subtree are less than the node's key, and </li>
+<li>all keys in the right subtree are greater than the node's key. </li>
+</ul>
+<p>It is an excellent container for a Dictionary or Map ADT, especially if the tree is somewhat "balanced" (we'll talk more about this later), supporting fast insert, lookup and remove. In addition, it also supports fast minimum, maximum, successor, and predecessor operations. Note that a dictionary implemented with sorted arrays provide at least as fast  operations except for in the cases of insert and remove.</p>
+<p>Our binary tree has a simple Node class:</p>
+<blockquote>
+<table>
+<tbody>
+<tr>
+<td>
+<pre>public class Node {
+    public Object element;
+    public Node left;
+    public Node right;
+    public Node parent;
+
+    public Node (Object e) {
+        this(e, null, null, null);
+    }
+
+    public Node (Object e, Node l, Node r, Node p) {
+        element = e;
+	left = l;
+	right = r;
+        parent = p;
+    }
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>Note that we maintain a <tt>parent</tt> reference in each node, which may be needed to <i>speed up</i> certain operations, such as finding the  successor or the predecessor of a key in a binary search tree.</p>
+<p>Back to <a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5312#toc">Table of contents</a></p>
+<h2><a name="operations">Operations on binary search trees</a></h2>
+<p>Some simple operations:</p>
+<ol>
+<li>The <b>smallest key</b> is the <b>leftmost node</b> starting from the  root of the tree.  If you have a tree rooted at reference "root", calling  <code>findLeftMost(root)</code> will return a reference to the leftmost  node, and the key within the node is the smallest key in the tree.
+<p>&nbsp;</p>
+<blockquote>
+<table>
+<tbody>
+<tr>
+<td>
+<pre><b>Iteratively</b>:
+
+/**
+ * Returns the leftmost node of this subtree rooted at "n".
+ * @param n the root of this subtree.
+ * @return the leftmost node.
+ */
+static Node findLeftMost(Node n) {
+    while (n.left != null)
+	n = n.left;
+    return n;
+}
+
+<b>Recursively</b>:
+
+static Node findLeftMost(Node n) {
+    if (n.left == null)
+	return n;
+    else
+	return findLeftMost(n.left);
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+</li>
+<li> The <b>largest key</b> is in the <b>rightmost node</b> starting from root  of the tree.  Just swap "left" with "right" in <code>findLeftMost</code> and you're done. </li>
+<li> The <b>successor</b> of a key in node in a binary search tree is the key that  is immediately larger this this key. Since the successor must be larger, it must belong in the right subtree. Specifically, it must be the <b>smallest key in the right subtree</b>! So, a partial implementation is the following:
+<blockquote>
+<table>
+<tbody>
+<tr>
+<td>
+<pre>/*
+ * Returns the successor node of the given node.
+ * @param n the node whose successor is sought.
+ * @return the successor node, null if given node contains the largest
+ *         key.
+ */
+public static Node findSuccessor(Node n) {
+    return findRightMost(n.right);
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>However, this ONLY works if the given node has a right subtree. What do we  do in the case where there is no right subtree? In the case where a node does not have a right subtree, the successor must be "above" somewhere. We move up the tree, and the first parent/grandparent node where we "turn  right" is the successor. If we move to the root's parent, we get null,  which is the case for the largest key in the tree.</p>
+<blockquote>
+<table>
+<tbody>
+<tr>
+<td>
+<pre>public static Node findSuccessor(Node n) {
+    if (n.right != null) {
+	// If n has a right subtree, then the successor node is the
+	// leftmost node in the right subtree.
+	Node p = findLeftMost(n.right);
+	return p;
+    } else {
+	// If n does not have a right subtree, the successor node is
+	// an ancestor node, but only if it's to the "right" of n. The
+	// successor to the largest node (which is the rightmost node
+	// in the tree) is the parent of root, which is null.
+	Node q = n;
+	Node p = q.parent;
+	while (p != null &amp;&amp; p.right == q) {
+	    q = p;
+	    p = p.parent;
+	}
+	return p;
+    }
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+This works for all cases. </li>
+<li> Finding the predecessor works the same way, except that you swap "left"  for "right" in the successor case. </li>
+<li> How do we find a key in a binary search tree? Easy, we start at root, looking for the key in a node - if found, we're done; otherwise, we move left or right depending on the key value.
+<blockquote>
+<table>
+<tbody>
+<tr>
+<td>
+<pre><b>Iteratively</b>:
+
+/**
+ * Finds the node containing the given key in tree rooted at "n".
+ * @param key the key to find in a tree node.
+ * @param n the root of this subtree.
+ * @return the node if found, or null otherwise.
+ */
+static Node findNode(Object key, Node n) {
+    while (n != null) {
+	if (key.equals(n.element))
+	    return n;
+	else if (((Comparable)key).compareTo(n.element) &gt; 0)
+	    n = n.right;
+	else
+	    n = n.left;
+    }
+    return n;
+}
+
+<b>Recursively</b>:
+
+/**
+ * Finds the node containing the given key in tree rooted at "n".
+ * @param key the key to find in a tree node.
+ * @param n the root of this subtree.
+ * @return the node if found, or null otherwise.
+ */
+static Node findNode(Object key, Node n) {
+    if (n == null)
+	return null;
+    else if (key.equals(n.element))
+	return n;
+    else if (((Comparable)key).compareTo(n.element) &gt; 0)
+	return findNode(key, n.right);
+    else
+	return findNode(key, n.left);
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+</li>
+<li> How would you get the keys in sorted manner? Two ways - you can visit the nodes "in-order" starting at the root; or, you can start at the  leftmost node, and iterate by visiting the successor at each step. The  first way has a "natural" recursive implementation, while the second way  has a "natural" iterative implementation.
+<p>First way - recursively (iteratively is not easy at all - just try by using a stack to emulate recursion; see Sedgewick for details):</p>
+<blockquote>
+<table>
+<tbody>
+<tr>
+<td>
+<pre>/**
+ * Prints the keys in sorted order using in-order traversal.
+ * @param n the root of this subtree.
+ */
+public static void printSorted(Node n) {
+    if (n == null)
+	return;
+    else {
+	printSorted(n.left);
+	System.out.println(n.element);
+	printSorted(n.right);
+    }
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>Second way - iteratively:</p>
+<blockquote>
+<table>
+<tbody>
+<tr>
+<td>
+<pre>/**
+ * Prints the keys in sorted order using iteration.
+ * @param n the root of this subtree.
+ */
+public static void printSorted(Node n) {
+    n = findLeftMost(n);
+    while (n != null) {
+	System.out.println(n.element);
+	n = findSuccessor(n);
+    }
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>Second way also works recursively (but of course!), but needs a "helper" method (see the two methods below - the first one is the helper one):</p>
+<blockquote>
+<table>
+<tbody>
+<tr>
+<td>
+<pre>/**
+ * Prints the keys in sorted order using iteration.
+ * @param n the root of this subtree.
+ */
+public static void printSorted(Node n) {
+    n = findLeftMost(n);
+    printSortedRec(n);
+}
+
+private static void printSortedRec(Node n) {
+    if (n == null)
+	return;
+    else {
+	System.out.println(n.element);
+	printSortedRec(findSuccessor(n));
+    }
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+</li>
+<li> Ok, now we need to start insert and remove operations. Let's start with insertion. Remember that an insertion into a binary search tree ALWAYS replaces an external node with a new internal node containing the key that is being inserted.
+<p>First, create a new Node object with the key in it. Now, if the tree is empty, then the new node becomes the root! Simple.</p>
+<p>Otherwise, we use lock-step method to move down the tree to find the external node that we'll replace (keeping a parent reference as we go down), and then add the new node in the appropriate place.</p>
+<blockquote>
+<table>
+<tbody>
+<tr>
+<td>
+<pre>/**
+ * Inserts a key in this binary search tree rooted at "root". Let's 
+ * assume distinct keys only, so we'll throw an exception if the key
+ * already exists.
+ *
+ * @param key the key to insert.
+ * @param root the root of this tree.
+ * @return reference to the root, which may have changed.
+ * @exception DuplicateKeyException if the key already exists.
+ */
+public static Node insert(Object key, Node root) {
+    // The tree may be empty, in which case we set root to the new
+    // node containing the given element.
+    if (root == null) {
+	root = new Node(key);
+    } else {
+	// Otherwise, tree is not empty, so we find the *parent* node
+	// to which we'll attach the new node as a child. We use two
+	// references in lock-step until one reaches an external node.
+	Node p = null; // the parent node.
+	Node n = root;
+	while (n != null) {
+	    int compare = ((Comparable) key).compareTo(n.element);
+	    if (compare == 0) {
+		throw new DuplicateKeyException();
+	    } else if (compare &gt; 0) {
+		p = n;
+		n = n.right;
+	    } else {
+		p = n;
+		n = n.left;
+	    }
+	}
+
+	// At this point, n points to the external node which will be
+	// replaced by the new node, and p points to the parent of n.
+	// So we just have to attach the new node to either left or
+	// the right child of p, depending on the relative values of
+	// p.element and element.
+
+	Node newNode = new Node(key);
+	if (((Comparable) key).compareTo(p.element) &gt; 0)
+	    p.right = newNode;
+	else
+	    p.left = newNode;
+
+	// p will become newNode's parent.
+	newNode.parent = p;
+    }
+    return root;
+}
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>There is a <b>much easier</b> and <b>much more elegant</b> recursive  algorithm, but takes a bit of getting used to. See Sedgewick Sec 12.6  for details.</p>
+<p>How would we handle duplicate keys? We have to use the relations  &lt; and &gt;= or &lt;= and &gt; for the left and right subtrees. How we handle it in the insert method depends on the problem on how to handle it. If we're using binary search tree to implement a Set ADT (remember that  we used a sorted array to implement a Set earlier), we may choose to ignore the duplicates. In the case of a phone book application, there is a value associated with a key, so for a duplicate key, it may simply update the value. Like I said, depends on the problem.</p>
+</li>
+<li> Ah, now we look at removing a key. Removing a key involves finding the node that contains the key, and removing that node from the binary search tree, ensuring that the resulting tree remains a binary search tree.
+<p>Sedgewick uses a beautiful recursive algorithm to do this, but that may be slightly tricky to understand. So I'll cover the iterative one as well.</p>
+<p>Let's look at the 3 cases we had discussed in class:</p>
+<ol>
+<li> Leaf node with no children - removing this is trivial, as we simply        have to the set the appropriate child reference in the parent to        null. </li>
+<li> Node with 1 child - also simple, as we add a "bypass" from its parent       to its only child. Have to keep track of left and right, etc, but        that can easily be done by comparing the keys. </li>
+<li> Node with both children - here's the tough one. Removing such a node        with destroy the tree's properties. There is one thing to note -        since it has both its children, its predecessor and successor are        both "below" it.  The predecessor is the rightmost node in its left        subtree, so it must not have more than 1 child; likewise, the        successor has *at most* 1 child.  Removing the predecessor or the        successor then falls under cases 1 or 2, since it will have either        0 or 1 child, which we already know how to do.  How does that help        us here? We simply replace the key in the node to be removed with        its successor (or predecessor), and then remove the successor (or        predecessor). Basically, we're reducing the problem of removing a        node with two children to the one of removing a node with 0 or 1        child. </li>
+</ol> </li>
+<li> Rotating a tree around a given node. I'll leave this one for you to  study from the textbook (Sec. 12.8). </li>
+</ol>
+<p>Back to <a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5312#toc">Table of contents</a></p>
+<h2><a name="performance">Performance of binary search trees</a></h2>
+<p>Now the big  question - what's the <b>maximum number of comparisons</b> we need to  make to find a key in a binary search tree? Well, in the worst case, we start from the root, work our way down to either a leaf node (success) or an external  node (failure). Both cases, the maximum number of comparisons is 1 more than the tree's height (remember that a tree with a single node has a  height of 0). We know that the maximum and minimum heights of a binary tree:</p>
+<blockquote>
+<table>
+<tbody>
+<tr>
+<td>
+<pre>    log_2(N+1) &lt;= h &lt;= N - 1
+    
+Which means that the maximum number of comparisons, equal to 1+h, can be
+computed easily as well: if C is the number of comparisons:
+    
+    C &lt;= h + 1 			(in the worst case, it's equal to h + 1)
+       = N - 1 + 1 = N
+
+    max # of comparisons = N
+
+just like linear search! Not good at all. However, if the tree were nicely
+balanced (see the text for definition), we have a "short" tree. If we now
+use the minimum height, the number of comparisons is:
+
+    C &gt;= log_2(N+1) + 1
+</pre>
+</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>so at least approximately log_2(N) comparisons! Note that binary search (on sorted arrays) provides a guarantee of log_2(N) comparisons in the WORST case, and for a binary search tree there is actually a range from log_2(N) to h.</p>
+<p>This should tell you that we really really want a balanced tree! But how? We'll do that next semester.</p>
+<p>Back to <a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5312#toc">Table of contents</a></p>
+<h2><a name="discussion">Discussion</a></h2>
+<p>Back to <a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5312#toc">Table of contents</a></p></div></div><div class="modified">Last modified: Thursday, 14 July 2011, 09:32 AM</div>                        </div>
+                    </div>
+                </div>
+
+                                <div id="region-pre">
+                    <div class="region-content">
+                        <a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5312#sb-1" class="skip-block">Skip Navigation</a><div id="inst4" class="block_navigation  block"><div class="header"><div class="title" id="yui_3_2_0_1_1397080173708272"><div class="block_action"><img class="block-hider-hide" alt="Hide Navigation block" title="Hide Navigation block" src="./cse220-01-sp14  Binary search trees_files/image.php"><img class="block-hider-show" alt="Show Navigation block" title="Show Navigation block" src="./cse220-01-sp14  Binary search trees_files/image(1).php"></div><h2>Navigation</h2></div></div><div class="content"><ul class="block_tree list"><li class="type_unknown depth_1 contains_branch"><p class="tree_item branch navigation_node"><a title="Home" href="http://moodle.bracu.ac.bd/">Home</a></p><ul><li class="type_setting depth_2 item_with_icon"><p class="tree_item leaf hasicon"><a title="My home" href="http://moodle.bracu.ac.bd/my/"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Binary search trees_files/image(2).php">My home</a></p></li>
+<li class="type_course depth_2 collapsed contains_branch"><p class="tree_item branch"><span title="BRAC University Courses">Site pages</span></p><ul><li class="type_custom depth_3 item_with_icon"><p class="tree_item leaf hasicon"><a title="Blogs" href="http://moodle.bracu.ac.bd/blog/index.php?courseid=0"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Binary search trees_files/image(2).php">Blogs</a></p></li>
+<li class="type_custom depth_3 item_with_icon"><p class="tree_item leaf hasicon"><a title="Tags" href="http://moodle.bracu.ac.bd/tag/search.php"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Binary search trees_files/image(2).php">Tags</a></p></li></ul></li>
+<li class="type_user depth_2 collapsed contains_branch"><p class="tree_item branch"><span>My profile</span></p><ul><li class="type_custom depth_3 item_with_icon"><p class="tree_item leaf hasicon"><a title="View profile" href="http://moodle.bracu.ac.bd/user/profile.php?id=2747"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Binary search trees_files/image(2).php">View profile</a></p></li>
+<li class="type_custom depth_3 collapsed contains_branch"><p class="tree_item branch"><span>Forum posts</span></p><ul><li class="type_custom depth_4 item_with_icon"><p class="tree_item leaf hasicon"><a title="Posts" href="http://moodle.bracu.ac.bd/mod/forum/user.php?id=2747"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Binary search trees_files/image(2).php">Posts</a></p></li>
+<li class="type_custom depth_4 item_with_icon"><p class="tree_item leaf hasicon"><a title="Discussions" href="http://moodle.bracu.ac.bd/mod/forum/user.php?id=2747&mode=discussions"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Binary search trees_files/image(2).php">Discussions</a></p></li></ul></li>
+<li class="type_unknown depth_3 collapsed contains_branch"><p class="tree_item branch"><span>Blogs</span></p><ul><li class="type_custom depth_4 item_with_icon"><p class="tree_item leaf hasicon"><a title="View all of my entries" href="http://moodle.bracu.ac.bd/blog/index.php?userid=2747"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Binary search trees_files/image(2).php">View all of my entries</a></p></li>
+<li class="type_custom depth_4 item_with_icon"><p class="tree_item leaf hasicon"><a title="Add a new entry" href="http://moodle.bracu.ac.bd/blog/edit.php?action=add"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Binary search trees_files/image(2).php">Add a new entry</a></p></li></ul></li>
+<li class="type_setting depth_3 item_with_icon"><p class="tree_item leaf hasicon"><a title="Messages" href="http://moodle.bracu.ac.bd/message/index.php"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Binary search trees_files/image(2).php">Messages</a></p></li>
+<li class="type_setting depth_3 item_with_icon"><p class="tree_item leaf hasicon"><a title="My private files" href="http://moodle.bracu.ac.bd/user/files.php"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Binary search trees_files/image(2).php">My private files</a></p></li></ul></li>
+<li class="type_system depth_2 contains_branch"><p class="tree_item branch canexpand"><span>My courses</span></p><ul><li class="type_course depth_3 contains_branch"><p class="tree_item branch canexpand"><a title="CSE 220: Data Structures (Spring &#39;14) " href="http://moodle.bracu.ac.bd/course/view.php?id=328">cse220-01-sp14</a></p><ul><li class="type_unknown depth_4 collapsed contains_branch"><p class="tree_item branch"><a title="Participants" href="http://moodle.bracu.ac.bd/user/index.php?id=328">Participants</a></p><ul><li class="type_custom depth_5 item_with_icon"><p class="tree_item leaf hasicon"><a title="Blogs" href="http://moodle.bracu.ac.bd/blog/index.php?courseid=328"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Binary search trees_files/image(2).php">Blogs</a></p></li>
+<li class="type_user depth_5 collapsed contains_branch"><p class="tree_item branch"><a title="MUHAIMINUR RAHMAN" href="http://moodle.bracu.ac.bd/user/view.php?id=2747&course=328">MUHAIMINUR RAHMAN</a></p><ul><li class="type_custom depth_6 item_with_icon"><p class="tree_item leaf hasicon"><a title="View profile" href="http://moodle.bracu.ac.bd/user/view.php?id=2747&course=328"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Binary search trees_files/image(2).php">View profile</a></p></li>
+<li class="type_custom depth_6 collapsed contains_branch"><p class="tree_item branch"><span>Forum posts</span></p><ul><li class="type_custom depth_7 item_with_icon"><p class="tree_item leaf hasicon"><a title="Posts" href="http://moodle.bracu.ac.bd/mod/forum/user.php?id=2747&course=328"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Binary search trees_files/image(2).php">Posts</a></p></li>
+<li class="type_custom depth_7 item_with_icon"><p class="tree_item leaf hasicon"><a title="Discussions" href="http://moodle.bracu.ac.bd/mod/forum/user.php?id=2747&course=328&mode=discussions"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Binary search trees_files/image(2).php">Discussions</a></p></li></ul></li>
+<li class="type_unknown depth_6 collapsed contains_branch"><p class="tree_item branch"><span>Blogs</span></p><ul><li class="type_custom depth_7 item_with_icon"><p class="tree_item leaf hasicon"><a title="View all of my entries" href="http://moodle.bracu.ac.bd/blog/index.php?userid=2747"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Binary search trees_files/image(2).php">View all of my entries</a></p></li>
+<li class="type_custom depth_7 item_with_icon"><p class="tree_item leaf hasicon"><a title="Add a new entry" href="http://moodle.bracu.ac.bd/blog/edit.php?action=add"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Binary search trees_files/image(2).php">Add a new entry</a></p></li></ul></li>
+<li class="type_setting depth_6 item_with_icon"><p class="tree_item leaf hasicon"><a title="Messages" href="http://moodle.bracu.ac.bd/message/index.php"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Binary search trees_files/image(2).php">Messages</a></p></li>
+<li class="type_setting depth_6 item_with_icon"><p class="tree_item leaf hasicon"><a title="My private files" href="http://moodle.bracu.ac.bd/user/files.php"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Binary search trees_files/image(2).php">My private files</a></p></li></ul></li></ul></li>
+<li class="type_structure depth_4 collapsed contains_branch"><p class="tree_item branch" id="expandable_branch_1"><span>Course information</span></p></li>
+<li class="type_structure depth_4 collapsed contains_branch"><p class="tree_item branch" id="expandable_branch_2"><span>Arrays and linked lists</span></p></li>
+<li class="type_structure depth_4 collapsed contains_branch"><p class="tree_item branch" id="expandable_branch_3"><span>Stacks and Queues</span></p></li>
+<li class="type_structure depth_4 collapsed contains_branch"><p class="tree_item branch" id="expandable_branch_4"><span>Searching and sorting</span></p></li>
+<li class="type_structure depth_4 collapsed contains_branch"><p class="tree_item branch" id="expandable_branch_5"><span>Recursion</span></p></li>
+<li class="type_structure depth_4 contains_branch"><p class="tree_item branch canexpand"><span>Trees and Graphs</span></p><ul><li class="type_activity depth_5 collapsed contains_branch"><p class="tree_item branch hasicon" id="expandable_branch_6"><a title="Page" href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5310"><img alt="Page" class="smallicon navicon" title="Page" src="./cse220-01-sp14  Binary search trees_files/image(3).php">Trees</a></p></li>
+<li class="type_activity depth_5 item_with_icon"><p class="tree_item leaf hasicon"><a title="File" href="http://moodle.bracu.ac.bd/mod/resource/view.php?id=5311"><img alt="File" class="smallicon navicon" title="File" src="./cse220-01-sp14  Binary search trees_files/image(4).php">Trees (PDF)</a></p></li>
+<li class="type_activity depth_5 item_with_icon current_branch"><p class="tree_item leaf hasicon active_tree_node"><a title="Page" href="./cse220-01-sp14  Binary search trees_files/cse220-01-sp14  Binary search trees.htm"><img alt="Page" class="smallicon navicon" title="Page" src="./cse220-01-sp14  Binary search trees_files/image(3).php">Binary search trees</a></p></li>
+<li class="type_activity depth_5 item_with_icon"><p class="tree_item leaf hasicon"><a title="File" href="http://moodle.bracu.ac.bd/mod/resource/view.php?id=5313"><img alt="File" class="smallicon navicon" title="File" src="./cse220-01-sp14  Binary search trees_files/image(4).php">Binary search trees (PDF)</a></p></li>
+<li class="type_activity depth_5 collapsed contains_branch"><p class="tree_item branch hasicon" id="expandable_branch_7"><a title="Page" href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5314"><img alt="Page" class="smallicon navicon" title="Page" src="./cse220-01-sp14  Binary search trees_files/image(3).php">Introduction to Graphs</a></p></li>
+<li class="type_activity depth_5 item_with_icon"><p class="tree_item leaf hasicon"><a title="File" href="http://moodle.bracu.ac.bd/mod/resource/view.php?id=5315"><img alt="File" class="smallicon navicon" title="File" src="./cse220-01-sp14  Binary search trees_files/image(4).php">Introduction to Graphs (PDF)</a></p></li></ul></li></ul></li>
+<li class="type_course depth_3 collapsed contains_branch"><p class="tree_item branch" id="expandable_branch_8"><a title="CSE 260: Digital Logic Design  (Spring &#39;14)" href="http://moodle.bracu.ac.bd/course/view.php?id=341">cse260-01-sp14</a></p></li></ul></li></ul></li></ul></div></div><span id="sb-1" class="skip-block-to"></span><a href="http://moodle.bracu.ac.bd/mod/page/view.php?id=5312#sb-2" class="skip-block">Skip Settings</a><div id="inst5" class="block_settings  block"><div class="header"><div class="title" id="yui_3_2_0_1_1397080173708292"><div class="block_action"><img class="block-hider-hide" alt="Hide Settings block" title="Hide Settings block" src="./cse220-01-sp14  Binary search trees_files/image.php"><img class="block-hider-show" alt="Show Settings block" title="Show Settings block" src="./cse220-01-sp14  Binary search trees_files/image(1).php"></div><h2>Settings</h2></div></div><div class="content"><div id="settingsnav" class="box block_tree_box"><ul class="block_tree list"><li class="type_course collapsed contains_branch"><p class="tree_item branch root_node"><span>Course administration</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a title="Grades" href="http://moodle.bracu.ac.bd/grade/report/index.php?id=328"><img alt="" class="smallicon navicon" title="" src="./cse220-01-sp14  Binary search trees_files/image(5).php">Grades</a></p></li></ul></li>
+<li class="type_unknown collapsed contains_branch"><hr><p class="tree_item branch root_node" id="usersettings"><span>My profile settings</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a title="Edit profile" href="http://moodle.bracu.ac.bd/user/edit.php?id=2747&course=328"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Binary search trees_files/image(2).php">Edit profile</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a title="Change password" href="http://moodle.bracu.ac.bd/login/change_password.php?id=328"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Binary search trees_files/image(2).php">Change password</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a title="Security keys" href="http://moodle.bracu.ac.bd/user/managetoken.php?sesskey=tvOAnvczDm"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Binary search trees_files/image(2).php">Security keys</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a title="Messaging" href="http://moodle.bracu.ac.bd/message/edit.php?id=2747&course=328"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Binary search trees_files/image(2).php">Messaging</a></p></li>
+<li class="type_unknown collapsed contains_branch"><p class="tree_item branch"><span>Blogs</span></p><ul><li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a title="Preferences" href="http://moodle.bracu.ac.bd/blog/preferences.php"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Binary search trees_files/image(2).php">Preferences</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a title="External blogs" href="http://moodle.bracu.ac.bd/blog/external_blogs.php"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Binary search trees_files/image(2).php">External blogs</a></p></li>
+<li class="type_setting collapsed item_with_icon"><p class="tree_item leaf"><a title="Register an external blog" href="http://moodle.bracu.ac.bd/blog/external_blog_edit.php"><img alt="moodle" class="smallicon navicon" title="moodle" src="./cse220-01-sp14  Binary search trees_files/image(2).php">Register an external blog</a></p></li></ul></li></ul></li></ul></div></div></div><span id="sb-2" class="skip-block-to"></span>                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- START OF FOOTER -->
+        <div id="page-footer" class="clearfix">
+        <p class="helplink"></p>
+        <div class="logininfo">You are logged in as <a href="http://moodle.bracu.ac.bd/user/profile.php?id=2747">MUHAIMINUR RAHMAN</a>  (<a href="http://moodle.bracu.ac.bd/login/logout.php?sesskey=tvOAnvczDm">Logout</a>)</div><div class="homelink"><a href="http://moodle.bracu.ac.bd/course/view.php?id=328">cse220-01-sp14</a></div>    </div>
+    </div>
+<script type="text/javascript" src="./cse220-01-sp14  Binary search trees_files/javascript(3).php"></script>
+<script type="text/javascript">
+//<![CDATA[
+M.str = {"repository":{"add":"Add","back":"&laquo; Back","close":"Close","cleancache":"Clean my cache files","copying":"Copying","date":"Date","downloadsucc":"The file has been downloaded successfully","emptylist":"Empty list","error":"An unknown error occurred!","federatedsearch":"Federated search","filenotnull":"You must select a file to upload.","getfile":"Select this file","iconview":"View as icons","invalidjson":"Invalid JSON string","linkexternal":"Link external","listview":"View as list","loading":"Loading...","login":"Login","logout":"Logout","noenter":"Nothing entered","noresult":"No search result","manageurl":"Manage","popup":"Click \"Login\" button to login","preview":"Preview","refresh":"Refresh","save":"Save","saveas":"Save as","saved":"Saved","saving":"Saving","search":"Search","searching":"Search in","size":"Size","submit":"Submit","sync":"Sync","title":"Choose a file...","upload":"Upload this file","uploading":"Uploading...","xhtmlerror":"You are probably using XHTML strict header, some YUI Component doesn't work in this mode, please turn it off in moodle","chooselicense":"Choose license","author":"Author","norepositoriesavailable":"Sorry, none of your current repositories can return files in the required format.","norepositoriesexternalavailable":"Sorry, none of your current repositories can return external files.","nofilesattached":"No files attached","filepicker":"File picker","nofilesavailable":"No files available"},"moodle":{"cancel":"Cancel","help":"Help","ok":"OK","error":"Error","info":"Information","viewallcourses":"View all courses","yes":"Yes"},"block":{"addtodock":"Move this to the dock","undockitem":"Undock this item","undockall":"Undock all"},"langconfig":{"thisdirectionvertical":"btt"},"admin":{"confirmation":"Confirmation"}};
+//]]>
+</script>
+<script type="text/javascript">
+//<![CDATA[
+var navtreeexpansions4 = [{"id":"expandable_branch_1","key":"4414","type":30},{"id":"expandable_branch_2","key":"4416","type":30},{"id":"expandable_branch_3","key":"4417","type":30},{"id":"expandable_branch_4","key":"4418","type":30},{"id":"expandable_branch_5","key":"4419","type":30},{"id":"expandable_branch_6","key":"5310","type":40},{"id":"expandable_branch_7","key":"5314","type":40},{"id":"expandable_branch_8","key":"341","type":20}];
+//]]>
+</script>
+<script type="text/javascript">
+//<![CDATA[
+YUI(M.yui.loader).use('node', function(Y) {
+M.util.load_flowplayer();
+setTimeout("fix_column_widths()", 20);
+M.yui.galleryversion="2010.04.08-12-35";Y.use("core_dock","moodle-block_navigation-navigation",function() {M.block_navigation.init_add_tree({"id":"4","instance":"4","candock":false,"courselimit":"20","expansionlimit":0});
+})
+M.yui.galleryversion="2010.04.08-12-35";Y.use("core_dock","moodle-block_navigation-navigation",function() {M.block_navigation.init_add_tree({"id":"5","instance":"5","candock":false});
+})
+M.util.init_block_hider(Y, {"id":"inst4","title":"Navigation","preference":"block4hidden","tooltipVisible":"Hide Navigation block","tooltipHidden":"Show Navigation block"});
+M.util.init_block_hider(Y, {"id":"inst5","title":"Settings","preference":"block5hidden","tooltipVisible":"Hide Settings block","tooltipHidden":"Show Settings block"});
+
+});
+//]]>
+</script>
+
+
+<div id="dock" class="dock dock_left_vertical nothingdocked"><div class="buttons_container" id="yui_3_2_0_1_139708017370839"><div class="dockeditem_container"></div><div class="controls"><img alt="Undock all" title="Undock all" src="./cse220-01-sp14  Binary search trees_files/image(6).php"></div></div></div><div style="display: none;"></div><iframe width="0" height="0" frameborder="0" src="about:blank" id="GINGER_SOFTWARE_contextMenuIFrame" scrolling="no" style="border: 0px solid; z-index: 2147483647; height: 0px; width: 0px; background-color: transparent;"></iframe><iframe width="0" height="0" frameborder="0" src="about:blank" id="GINGER_SOFTWARE_bubblesIFrame" scrolling="no" style="border: 0px solid; position: absolute; z-index: 2147483647; height: 0px; width: 0px; background-color: transparent;"></iframe><div id="GingerWidgetInfo" style="display:none;">{"version":"0.1.0.394","isExtension":true,"extensionName":"Chrome"}</div></body></html>
